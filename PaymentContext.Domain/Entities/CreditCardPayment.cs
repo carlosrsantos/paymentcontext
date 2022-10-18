@@ -14,6 +14,7 @@ public class CreditCardPayment : Payment
     decimal totalPaid,
     string payer,
     Document document,
+    Address address,
     Email email)
   :base(paidDate,
         expireDate,
@@ -21,6 +22,7 @@ public class CreditCardPayment : Payment
         totalPaid,
         payer,
         document,
+        address,
         email)
   {
     CardHolderName = cardHolderName;

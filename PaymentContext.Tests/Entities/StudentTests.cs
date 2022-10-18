@@ -8,9 +8,9 @@ public class StudentTests
   [TestMethod]
   public void TestMethod1()
   {
-    var student = new Student("Carlos",
-      "Santos",
-      "121343435",
-      "hello@gmail.com");
+    // var student = new Student("Carlos",
+    //   "Santos",
+    //   "121343435",
+    //   "hello@gmail.com");
   }
 }

@@ -12,6 +12,7 @@ public class BoletoPayment : Payment
     decimal totalPaid,
     string payer,
     Document document,
+    Address address,
     Email email)
   :base(paidDate,
     expireDate,
@@ -19,6 +20,7 @@ public class BoletoPayment : Payment
     totalPaid,
     payer,
     document,
+    address,
     email)
   {
     BarCode = barCode;
