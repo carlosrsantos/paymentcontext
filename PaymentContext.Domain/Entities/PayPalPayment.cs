@@ -1,3 +1,5 @@
+using PaymentContext.Domain.ValueObjects;
+
 namespace PaymentContext.Domain.Entities;
 
 public class PayPalPayment : Payment
@@ -9,8 +11,8 @@ public class PayPalPayment : Payment
     decimal total,
     decimal totalPaid,
     string payer,
-    string document,
-    string email)
+    Document document,
+    Email email)
   :base(paidDate,
         expireDate,
         total,
