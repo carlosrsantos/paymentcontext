@@ -1,4 +1,3 @@
-using Flunt.Notifications;
 using Flunt.Validations;
 using PaymentContext.Domain.ValueObjects;
 using PaymentContext.Shared.Entities;
@@ -23,7 +22,7 @@ public class Student: Entity
   public Name Name { get; private set;}
   public Document Document { get; private set; }     
   public Email Email { get; private set; }
-  public Address Address { get; private set; }
+  public Address? Address { get; private set; }
   public IReadOnlyCollection<Subscription> Subscriptions
   { 
     get
@@ -40,7 +39,16 @@ public class Student: Entity
         hasSubscriptionActive = true;
     }
 
-    if(hasSubscriptionActive)
-      AddNotification( "Student.Subscriptions", "Você já tem uma assinatura ativa");
+    // if(hasSubscriptionActive)
+    //   AddNotification( "Student.Subscriptions", "Você já tem uma assinatura ativa");
+    AddNotifications(new Contract<Subscription>()
+      .Requires()
+      .IsFalse(hasSubscriptionActive, "Student.Subscriptions","Você já tem uma assinatura ativa")
+      .AreNotEquals(0, subscription.Payments.Count, "Student.Subscription.Payments","Esta assinatura não possui pagamentos")
+    );
+
+    if (IsValid)
+      _subscriptions.Add(subscription);
+
   }
 }
