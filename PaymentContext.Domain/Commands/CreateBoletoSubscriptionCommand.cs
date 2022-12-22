@@ -35,9 +35,9 @@ public class CreateBoletoSubscriptionCommand : Notifiable<Notification>, IComman
   {
     AddNotifications(new Contract<Name>()
       .Requires()
-      .IsNotNullOrEmpty("Name.FirstName", "Nome inválido")
-      .IsNotMinValue(3, "Name.FirstName", "Nome deve conter pelo menos 3 caracteres")
-      .IsNotMaxValue(30, "Name.FirstName", "Nome deve conter no máximo 30 caracteres")
+      .IsNullOrEmpty("Name.FirstName", "Nome inválido")
+      // .IsMinValue(3, "Name.FirstName", "Nome deve conter pelo menos 3 caracteres")
+      // .IsNotMaxValue(30, "Name.FirstName", "Nome deve conter no máximo 30 caracteres")
     );
   }
 }
